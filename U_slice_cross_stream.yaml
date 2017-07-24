@@ -1,0 +1,25 @@
+# Slice definition to be used for Paraview batch processing
+
+# Data information
+fieldName: U
+dataCenter: [5000.0, 1500.0, 80.0]  # to set up the camera view
+sliceNormal: y # to set up the camera view
+
+# Output options
+viewSize: [1200, 800]
+colorbarRange: [6.0, 10.0]
+annotateFilename: True  # Add file name to upper-left corner of snapshot
+horizontalColorbar: True  # Move colorbar to bottom center
+
+# Files to process
+sliceFiles:
+    -  sliceDataInstantaneous/100/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/200/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/300/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/400/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/500/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/600/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/700/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/800/U_slice_cross_stream.vtk
+    -  sliceDataInstantaneous/900/U_slice_cross_stream.vtk
+    - sliceDataInstantaneous/1000/U_slice_cross_stream.vtk
