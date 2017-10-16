@@ -1,13 +1,14 @@
 # paraview
-Scripts for Paraview batch processing (using pvbatch)
+This is a collection of scripts for Paraview batch processing (using pvbatch), macros for Paraview
+interactive analysis, and utility scripts.
 
-Sample Peregrine environment:
+Sample Peregrine environment for batch processing:
 ```bash
 Currently Loaded Modulefiles:
   1) gcc/4.8.2                 2) openmpi-gcc/1.7.3-4.8.2   3) python/2.7.6              4) paraview/4.2.0-compute
 ```
 
-Sample usage:
+Sample batch job:
 ```bash
 pvbatch slice2D_to_png.py U_slice_horizontal_z080.yaml
 ```
