@@ -25,6 +25,8 @@ coordinates = np.loadtxt('windplant.xyz.csv',delimiter=',')
 # defaults
 disk_color = [0.0, 0.0, 0.0]
 disk_opacity = 0.4 # 1: opaque
+disk_radial_res = 12 # radial resolution
+disk_circ_res = 15 # circumferential resolution
 ###############################################################################
 
 disks = []
@@ -48,6 +50,8 @@ for i in range(len(coordinates)):
     # set disk properties
     disks[i].InnerRadius = hub_rad
     disks[i].OuterRadius = tip_rad
+    disks[i].RadialResolution = disk_radial_res
+    disks[i].CircumferentialResolution = disk_circ_res
 
     # create a new 'Transform'
     rotor_apex = coordinates[i,:]
