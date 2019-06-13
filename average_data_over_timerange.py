@@ -13,15 +13,16 @@
 # - Apply the filter (Macros >> average_data_over_timerange)
 # - Check averaging operations in log (Tools >> Python Shell)
 #
+from paraview.simple import *
 
 Stats_ReqData = """
 ##############################
 #*** AVERAGING PARAMETERS ***#
 averagingStartTime = 0
-averagingEndTime = self.ts[-1]
+averagingEndTime = 99
 averagingCellData = \'U\'
 averagingPointData = None
-averagedFieldName = \'tavg_U\'
+averagedFieldName = \'U_tavg\'
 ##############################
     
 executive = self.GetExecutive()
