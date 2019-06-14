@@ -34,6 +34,9 @@ src = GetActiveSource() #FindSource('U_tavg1hr_slice_horizontal_1.vtk')
 # create a new 'Plot Over Line'
 plotOverLine1 = PlotOverLine(Input=src, Source='High Resolution Line Source')
 
+if not os.path.isdir(outdir):
+    os.makedirs(outdir)
+
 for prefix,baseLocation in baseLocations.items():
 
     x0,y0,z0 = baseLocation
@@ -43,8 +46,6 @@ for prefix,baseLocation in baseLocations.items():
         pt1 = [x0 + downD*rotorDiameter, y0 - 2*rotorDiameter, z0]
         pt2 = [x0 + downD*rotorDiameter, y0 + 2*rotorDiameter, z0]
 
-        if not os.path.isdir(outdir):
-            os.makedirs(outdir)
         outfile = os.path.join(outdir,
                                '{:s}_{:.2g}D.csv'.format(prefix,downD))
 
