@@ -15,10 +15,16 @@ import os
 
 ##################################
 #### INPUTS FOR LINE SAMPLING ####
-baseLocation = [592.6, 2163.7, 90.01]
 rotorDiameter = 126.0
 downstreamDistances = [1,2,3,4,5,6,7,8]
-prefix = 'WT19'
+baseLocations = {
+    'WT35': [1175.2, 3912.8, 90.01],
+    'WT36': [ 788.2, 3406.1, 90.01],
+    'WT37': [ 586.8, 2801.2, 90.01],
+    'WT19': [ 592.6, 2163.7, 90.01],
+    'WT20': [ 805.2, 1562.6, 90.01],
+    'WT21': [1201.4, 1063.1, 90.01],
+}
 outdir = '/path/to/output/directory'
 ##################################
 
@@ -28,22 +34,24 @@ src = GetActiveSource() #FindSource('U_tavg1hr_slice_horizontal_1.vtk')
 # create a new 'Plot Over Line'
 plotOverLine1 = PlotOverLine(Input=src, Source='High Resolution Line Source')
 
-x0,y0,z0 = baseLocation
+for prefix,baseLocation in baseLocations.items():
 
-for downD in downstreamDistances:
+    x0,y0,z0 = baseLocation
 
-    pt1 = [x0 + downD*rotorDiameter, y0 - 2*rotorDiameter, z0]
-    pt2 = [x0 + downD*rotorDiameter, y0 + 2*rotorDiameter, z0]
+    for downD in downstreamDistances:
 
-    if not os.path.isdir(outdir):
-        os.makedirs(outdir)
-    outfile = os.path.join(outdir,
-                           '{:s}_{:.2g}D.csv'.format(prefix,downD))
+        pt1 = [x0 + downD*rotorDiameter, y0 - 2*rotorDiameter, z0]
+        pt2 = [x0 + downD*rotorDiameter, y0 + 2*rotorDiameter, z0]
 
-    # Properties modified on plotOverLine1.Source
-    plotOverLine1.Source.Point1 = pt1
-    plotOverLine1.Source.Point2 = pt2
+        if not os.path.isdir(outdir):
+            os.makedirs(outdir)
+        outfile = os.path.join(outdir,
+                               '{:s}_{:.2g}D.csv'.format(prefix,downD))
 
-    # save data
-    SaveData(outfile, proxy=plotOverLine1)
+        # Properties modified on plotOverLine1.Source
+        plotOverLine1.Source.Point1 = pt1
+        plotOverLine1.Source.Point2 = pt2
+
+        # save data
+        SaveData(outfile, proxy=plotOverLine1)
 
